@@ -1,0 +1,16 @@
+[package]
+name = "allyaudio"
+version = "0.1.0"
+edition = "2021"
+authors = ["Allyedge <alimarslank@gmail.com>"]
+license = "MIT"
+description = "A simple audio player CLI tool written in Rust."
+readme = "README.md"
+homepage = "https://github.com/Allyedge/allyaudio"
+repository = "https://github.com/Allyedge/allyaudio"
+keywords = ["cli", "audio", "music"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+clap = { version = "3.1.17", features = ["derive"] }
+rodio = "0.15.0"
