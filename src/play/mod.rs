@@ -2,20 +2,11 @@ use rodio::OutputStream;
 use std::fs::File;
 use std::io::{BufReader, Cursor};
 
-pub struct AudioSettings {
-    volume: f32,
-    speed: f32,
-}
-
-impl AudioSettings {
-    pub fn new(volume: f32, speed: f32) -> AudioSettings {
-        AudioSettings { volume, speed }
-    }
-}
+pub mod models;
 
 pub fn play_audio_from_url(
     url: String,
-    settings: AudioSettings,
+    settings: models::AudioSettings,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let response = reqwest::blocking::get(&url).unwrap();
 
@@ -32,7 +23,10 @@ pub fn play_audio_from_url(
     Ok(())
 }
 
-pub fn play_audio(file: String, settings: AudioSettings) -> Result<(), Box<dyn std::error::Error>> {
+pub fn play_audio(
+    file: String,
+    settings: models::AudioSettings,
+) -> Result<(), Box<dyn std::error::Error>> {
     let (_stream, stream_handle) = OutputStream::try_default()?;
 
     let file = BufReader::new(File::open(file)?);
