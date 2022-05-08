@@ -1,4 +1,5 @@
 use clap::Parser;
+use std::panic;
 
 mod play;
 
@@ -19,19 +20,24 @@ struct CLI {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    panic::set_hook(Box::new(|_| {
+        println!("Error! Something went wrong, please try again.");
+    }));
+
     let cli = CLI::parse();
+
     let settings =
         play::models::AudioSettings::new(cli.volume.unwrap_or(1.0), cli.speed.unwrap_or(1.0));
 
     if cli.file_or_url.starts_with("http") {
         match play::play_audio_from_url(cli.file_or_url, settings) {
             Ok(_) => println!("Playing..."),
-            Err(_) => panic!("Error! Something went wrong, please try again."),
+            Err(_) => panic!(),
         }
     } else {
         match play::play_audio(cli.file_or_url, settings) {
             Ok(_) => println!("Playing..."),
-            Err(_) => panic!("Error! Something went wrong, please try again."),
+            Err(_) => panic!(),
         }
     }
 
