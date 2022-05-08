@@ -1,7 +1,8 @@
 # Allyaudio
 
-[![Crates.io Version](https://img.shields.io/crates/v/allyaudio.svg)](https://crates.io/crates/allyaudio)
-[![Crates.io Downloads](https://img.shields.io/crates/d/allyaudio.svg)](https://crates.io/crates/allyaudio)
+[![Crates.io Version](https://img.shields.io/crates/v/allyaudio)](https://crates.io/crates/allyaudio)
+[![Crates.io Downloads](https://img.shields.io/crates/d/allyaudio)](https://crates.io/crates/allyaudio)
+[![Crates.io License](https://img.shields.io/crates/l/allyaudio)](https://crates.io/crates/allyaudio)
 
 A simple audio player CLI tool written in Rust.
 
