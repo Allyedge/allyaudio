@@ -12,11 +12,11 @@ struct CLI {
 
     /// Set the volume of the audio
     #[clap(short, long)]
-    volume: f32,
+    volume: Option<f32>,
 
     /// Set the speed of the audio
     #[clap(short, long)]
-    speed: f32,
+    speed: Option<f32>,
 }
 
 struct AudioSettings {
@@ -32,8 +32,7 @@ impl AudioSettings {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = CLI::parse();
-
-    let settings = AudioSettings::new(cli.volume, cli.speed);
+    let settings = AudioSettings::new(cli.volume.unwrap_or(1.0), cli.speed.unwrap_or(1.0));
 
     if cli.file_or_url.starts_with("http") {
         match play_audio_from_url(cli.file_or_url, settings) {
