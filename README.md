@@ -11,8 +11,11 @@ A simple audio player CLI tool written in Rust.
 ## Usage
 
 ```sh
-# Run Allyaudioo
+# Play a local audio file
 > allyaudio example.mp3
+
+# Play audio from an URL
+> allyaudio https://example.com/audio.mp3
 
 # Set the volume and the speed of the audio
 > allyaudio --volume=2 --speed=0.5 example.mp3
