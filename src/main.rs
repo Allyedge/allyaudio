@@ -31,15 +31,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     if cli.file_or_url.starts_with("http") {
         match play::play_audio_from_url(cli.file_or_url, settings) {
-            Ok(_) => println!("Playing..."),
+            Ok(_) => Ok(()),
             Err(_) => panic!(),
         }
     } else {
         match play::play_audio(cli.file_or_url, settings) {
-            Ok(_) => println!("Playing..."),
+            Ok(_) => Ok(()),
             Err(_) => panic!(),
         }
     }
-
-    Ok(())
 }
